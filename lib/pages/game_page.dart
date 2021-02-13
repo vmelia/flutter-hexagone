@@ -14,7 +14,7 @@ class _GamePageState extends State<GamePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('HexaGone'),
       ),
       body: Column(
         children: [HexGridWidget()],

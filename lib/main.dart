@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hexagone/view_models/game_view_model.dart';
+import 'package:provider/provider.dart';
 import 'package:hexagone/pages/game_page.dart';
 
 void main() {
@@ -15,7 +17,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blueGrey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: GamePage(title: 'HexaGone'),
+      home: ChangeNotifierProvider(
+        create: (context) => GameViewModel(),
+        child: GamePage(),
+      )
     );
   }
 }

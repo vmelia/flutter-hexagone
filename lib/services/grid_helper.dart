@@ -1,6 +1,7 @@
+import 'package:hexagone/contracts/i_grid_helper.dart';
 import 'package:hexagone/types/cell.dart';
 
-class GridHelper {
+class GridHelper implements IGridHelper {
   final int _maximumRange = 2;
   List<Cell> _allCells;
   List<Cell> _neighbourOffsets;

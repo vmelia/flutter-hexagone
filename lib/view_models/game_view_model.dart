@@ -13,25 +13,28 @@ class GameViewModel with ChangeNotifier {
   IGridHelper _gridHelper;
 
   List<Cell> _grid;
-  Colour _currentColour;
+  Colour _selectedColour;
 
   GameViewModel() {
     _colourHelper = locator<IColourHelper>();
     _colourMerger = locator<IColourMerger>();
     _gridHelper = locator<IGridHelper>();
 
-    _grid = List<Cell>();
-    _currentColour = Colour.Red;
+    _grid = _gridHelper.getAllCells();
+    
     notifyListeners();
   }
 
   void selectColour(Colour colour) {
-    _currentColour = colour;
+    _selectedColour = colour;
+
     notifyListeners();
   }
 
   void selectCell(Colour colour) {
-    _currentColour = colour;
+    // Paint cell.
+
+    // Paint neighbours.
     notifyListeners();
   }
 }

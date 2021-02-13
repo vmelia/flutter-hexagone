@@ -1,18 +1,18 @@
-import 'dart:math';
+import 'package:hexagone/types/cell.dart';
 
 class GridHelper {
-  final int _range = 2;
-  List<Point<int>> _neighbourOffsets;
+  final int _maximumRange = 2;
+  List<Cell> _neighbourOffsets;
 
   GridHelper() {
     _neighbourOffsets = getNeighbourOffsets();
   }
 
-  List<Point<int>> getCellsInRange(int range) {
-    var cells = List<Point<int>>();
+  List<Cell> getCellsInRange(int range) {
+    var cells = List<Cell>();
     for (var x = -range; x <= range; x++) {
       for (var y = -range; y <= range; y++) {
-        var cell = Point<int>(x, y);
+        var cell = Cell(x, y);
         if (_exists(cell)) cells.add(cell);
       }
     }
@@ -20,8 +20,12 @@ class GridHelper {
     return cells;
   }
 
-  List<Point<int>> getNeighbourOffsets() {
-    final offsets = List<Point<int>>();
+  List<Cell> getallCells() {
+    return getCellsInRange(_maximumRange);
+  }
+
+  List<Cell> getNeighbourOffsets() {
+    final offsets = List<Cell>();
     final cells = getCellsInRange(1);
     for (final cell in cells) {
       if (cell.x != cell.y) if (_exists(cell)) offsets.add(cell);
@@ -30,20 +34,20 @@ class GridHelper {
     return offsets;
   }
 
-  List<Point<int>> getNeighbours(Point<int> cell) {
-    var cells = List<Point<int>>();
+  List<Cell> getNeighbours(Cell cell) {
+    var cells = List<Cell>();
     for (final o in _neighbourOffsets) {
-      var potentialNeighbour = Point<int>(cell.x + o.x, cell.y + o.y);
+      var potentialNeighbour = Cell(cell.x + o.x, cell.y + o.y);
       if (_exists(potentialNeighbour)) cells.add(potentialNeighbour);
     }
 
     return cells;
   }
 
-  bool _exists(Point<int> cell) {
-    if (cell.x < -_range || cell.x > _range) return false;
-    if (cell.y < -_range || cell.y > _range) return false;
-
+  bool _exists(Cell cell) {
+    if (cell.x < -_maximumRange || cell.x > _maximumRange) return false;
+    if (cell.y < -_maximumRange || cell.y > _maximumRange) return false;
+   
     if (cell.x == 1 && cell.y == 2) return false;
     if (cell.x == 2 && cell.y == 1) return false;
     if (cell.x == 2 && cell.y == 2) return false;

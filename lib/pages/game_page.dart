@@ -28,7 +28,7 @@ class _GamePageState extends State<GamePage> {
           Container(
             color: Colors.transparent,
             padding: EdgeInsets.only(top: 15),
-            child: HexSeletWidget(),
+            child: HexSelectWidget(),
           ),
         ],
       ),

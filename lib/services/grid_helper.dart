@@ -2,9 +2,11 @@ import 'package:hexagone/types/cell.dart';
 
 class GridHelper {
   final int _maximumRange = 2;
+  List<Cell> _allCells;
   List<Cell> _neighbourOffsets;
 
   GridHelper() {
+    _allCells = getCellsInRange(_maximumRange);
     _neighbourOffsets = getNeighbourOffsets();
   }
 
@@ -20,9 +22,7 @@ class GridHelper {
     return cells;
   }
 
-  List<Cell> getallCells() {
-    return getCellsInRange(_maximumRange);
-  }
+  List<Cell> getAllCells() => List.from(_allCells);
 
   List<Cell> getNeighbourOffsets() {
     final offsets = List<Cell>();
@@ -47,7 +47,7 @@ class GridHelper {
   bool _exists(Cell cell) {
     if (cell.x < -_maximumRange || cell.x > _maximumRange) return false;
     if (cell.y < -_maximumRange || cell.y > _maximumRange) return false;
-   
+
     if (cell.x == 1 && cell.y == 2) return false;
     if (cell.x == 2 && cell.y == 1) return false;
     if (cell.x == 2 && cell.y == 2) return false;

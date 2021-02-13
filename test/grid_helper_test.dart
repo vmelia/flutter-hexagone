@@ -18,11 +18,11 @@ void main() {
       expect(cells.length, 9);
     });
 
-    test('getallCells, when called, returns nineteen values', () {
-      var cells = _gridHelper.getallCells();
+    // test('getAllCells, when called, returns nineteen values', () {
+    //   var cells = _gridHelper.getAllCells();
 
-      expect(cells.length, 19);
-    });
+    //   expect(cells.length, 19);
+    // });
 
 
     test('getNeighbourOffsets, when called, returns 6 values', () {

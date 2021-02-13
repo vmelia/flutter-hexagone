@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hexagone/pages/example_page.dart';
 import 'package:hexagone/pages/game_page.dart';
 
 void main() {

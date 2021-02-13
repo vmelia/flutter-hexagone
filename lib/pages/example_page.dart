@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hexagon/hexagon.dart';
 
 class ExamplePage extends StatefulWidget {
-  ExamplePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
   @override
   _ExamplePageState createState() => _ExamplePageState();
 }
@@ -57,7 +53,7 @@ class _ExamplePageState extends State<ExamplePage>
               Tab(text: 'Other'),
             ],
           ),
-          title: Text(widget.title),
+          title: Text("Examples"),
           actions: hasControls
               ? [
                   Row(children: [

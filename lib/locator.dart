@@ -6,13 +6,10 @@ import 'package:hexagone/services/colour_helper.dart';
 import 'package:hexagone/services/colour_merger.dart';
 import 'package:hexagone/services/grid_helper.dart';
 
-import 'contracts/i_colour_merger.dart';
-
 var locator = GetIt.instance;
 
 void setupLocator() {
-  // Services.
-  GetIt.I.registerSingleton<IColourHelper>(ColourHelper());
-  GetIt.I.registerSingleton<IColourMerger>(ColourMerger());
-  GetIt.I.registerSingleton<IGridHelper>(GridHelper());
+  locator.registerSingleton<IColourHelper>(ColourHelper());
+  locator.registerSingleton<IColourMerger>(ColourMerger());
+  locator.registerSingleton<IGridHelper>(GridHelper());
 }

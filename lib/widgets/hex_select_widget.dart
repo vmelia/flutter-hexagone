@@ -12,29 +12,38 @@ class HexSelectWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        RawMaterialButton(
-          constraints: BoxConstraints.expand(width: _size, height: _size),
-          fillColor: Colors.red,
-          shape: CircleBorder(),
-          onPressed: () {
-            viewModel.selectColour(Colour.Red);
-          },
+        Opacity(
+          opacity: viewModel.selectedColour == Colour.Red ? 1.0 : 0.4,
+          child: RawMaterialButton(
+            constraints: BoxConstraints.expand(width: _size, height: _size),
+            fillColor: Colors.red,
+            shape: CircleBorder(),
+            onPressed: () {
+              viewModel.selectColour(Colour.Red);
+            },
+          ),
         ),
-        RawMaterialButton(
-          constraints: BoxConstraints.expand(width: _size, height: _size),
-          fillColor: Colors.yellow,
-          shape: CircleBorder(),
-          onPressed: () {
-            viewModel.selectColour(Colour.Yellow);
-          },
+        Opacity(
+          opacity: viewModel.selectedColour == Colour.Yellow ? 1.0 : 0.4,
+          child: RawMaterialButton(
+            constraints: BoxConstraints.expand(width: _size, height: _size),
+            fillColor: Colors.yellow,
+            shape: CircleBorder(),
+            onPressed: () {
+              viewModel.selectColour(Colour.Yellow);
+            },
+          ),
         ),
-        RawMaterialButton(
-          constraints: BoxConstraints.expand(width: _size, height: _size),
-          fillColor: Colors.blue,
-          shape: CircleBorder(),
-          onPressed: () {
-            viewModel.selectColour(Colour.Blue);
-          },
+        Opacity(
+          opacity: viewModel.selectedColour == Colour.Blue ? 1.0 : 0.4,
+          child: RawMaterialButton(
+            constraints: BoxConstraints.expand(width: _size, height: _size),
+            fillColor: Colors.blue,
+            shape: CircleBorder(),
+            onPressed: () {
+              viewModel.selectColour(Colour.Blue);
+            },
+          ),
         ),
       ],
     );

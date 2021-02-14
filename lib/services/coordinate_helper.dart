@@ -43,6 +43,7 @@ class CoordinateHelper implements ICoordinateHelper {
     return coordinates;
   }
 
+  //ToDo: This doesn't belong here. It's more a grid thing.
   bool _exists(Coordinate coordinate) {
     if (coordinate.x < -_maximumRange || coordinate.x > _maximumRange)
       return false;

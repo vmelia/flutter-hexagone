@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hexagone/types/Colour.dart';
+import 'package:hexagone/types/colour.dart';
 import 'package:hexagone/view_models/game_view_model.dart';
 import 'package:provider/provider.dart';
 

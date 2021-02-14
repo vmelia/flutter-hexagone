@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:hexagone/contracts/i_colour_helper.dart';
 // import 'package:hexagone/contracts/i_colour_merger.dart';
 // import 'package:hexagone/contracts/i_grid_helper.dart';
-import 'package:hexagone/types/Colour.dart';
+import 'package:hexagone/types/colour.dart';
 // import 'package:hexagone/types/Coordinate.dart';
 // import '../locator.dart';
 

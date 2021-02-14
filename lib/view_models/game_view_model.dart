@@ -1,9 +1,8 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:hexagone/contracts/i_colour_helper.dart';
 import 'package:hexagone/contracts/i_colour_merger.dart';
 import 'package:hexagone/contracts/i_grid_helper.dart';
+import 'package:hexagone/contracts/i_randomizer.dart';
 import 'package:hexagone/types/colour.dart';
 import 'package:hexagone/types/coordinate.dart';
 import '../locator.dart';
@@ -12,7 +11,8 @@ class GameViewModel with ChangeNotifier {
   IColourHelper _colourHelper;
   IColourMerger _colourMerger;
   IGridHelper _gridHelper;
-  Random _random;
+  IRandomizer _randomizer;
+
   Map<Coordinate, Colour> _grid;
   Colour _selectedColour;
 
@@ -20,9 +20,9 @@ class GameViewModel with ChangeNotifier {
     _colourHelper = locator<IColourHelper>();
     _colourMerger = locator<IColourMerger>();
     _gridHelper = locator<IGridHelper>();
-    _random = new Random();
+    _randomizer = locator<IRandomizer>();
 
-    initializeGame(6);  // Medium.
+    initializeGame(6); // Medium.
   }
 
   Colour get selectedColour => _selectedColour;
@@ -59,22 +59,11 @@ class GameViewModel with ChangeNotifier {
 
   void initializeGame(int iterations) {
     _grid = _gridHelper.createGrid();
-    var moves = 0;
-    while (moves < iterations) {
-      selectedColour = _colourHelper.getRandomPrimaryColour();
-
-      var randomX = _random.nextInt(5) - 2;
-      var randomY = _random.nextInt(5) - 2;
-      var coordinate = Coordinate(randomX, randomY);
-      while (!_grid.containsKey(coordinate)) {
-        randomX = _random.nextInt(5) - 2;
-        randomY = _random.nextInt(5) - 2;
-        coordinate = Coordinate(randomX, randomY);
-      }
-
-      selectCell(coordinate);
-      moves++;
-      print('${coordinate.x}, ${coordinate.y}, $selectedColour');
+    var randomCoordinates = _randomizer.getRandomCoordinates(_grid, iterations);
+    for(var randomCoordinate in randomCoordinates){
+      selectedColour = _randomizer.getRandomPrimaryColour();
+      selectCell(randomCoordinate);
+      print('${randomCoordinate.x}, ${randomCoordinate.y}, $selectedColour');
     }
 
     selectedColour = null;

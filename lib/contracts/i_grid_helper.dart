@@ -1,11 +1,6 @@
-import 'package:hexagone/types/cell.dart';
+import 'package:hexagone/types/Colour.dart';
+import 'package:hexagone/types/coordinate.dart';
 
 abstract class IGridHelper {
-  List<Cell> getCellsInRange(int range);
-
-  List<Cell> getAllCells();
-
-  List<Cell> getNeighbourOffsets();
-
-  List<Cell> getNeighbours(Cell cell);
+  Map<Coordinate, Colour> createGrid();
 }

@@ -1,10 +1,11 @@
+import 'package:hexagone/contracts/i_colour_merger.dart';
 import 'package:hexagone/services/colour_merger.dart';
 import 'package:hexagone/types/Colour.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('ColourMerger Tests', () {
-    final ColourMerger _colourMerger = ColourMerger();
+    final IColourMerger _colourMerger = ColourMerger();
 
     void _testMergeToWhite(Colour colour){
       var actual = _colourMerger.merge(colour, colour);

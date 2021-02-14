@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:hexagone/contracts/i_colour_helper.dart';
-import 'package:hexagone/contracts/i_colour_merger.dart';
-import 'package:hexagone/contracts/i_grid_helper.dart';
+// import 'package:hexagone/contracts/i_colour_helper.dart';
+// import 'package:hexagone/contracts/i_colour_merger.dart';
+// import 'package:hexagone/contracts/i_grid_helper.dart';
 import 'package:hexagone/types/Colour.dart';
-import 'package:hexagone/types/cell.dart';
-
-import '../locator.dart';
+// import 'package:hexagone/types/Coordinate.dart';
+// import '../locator.dart';
 
 class GameViewModel with ChangeNotifier {
-  IColourHelper _colourHelper;
-  IColourMerger _colourMerger;
-  IGridHelper _gridHelper;
+  // IColourHelper _colourHelper;
+  // IColourMerger _colourMerger;
+  // IGridHelper _gridHelper;
 
-  List<Cell> _grid;
+  // List<Coordinate> _grid;
   Colour _selectedColour;
 
   GameViewModel() {
-    _colourHelper = locator<IColourHelper>();
-    _colourMerger = locator<IColourMerger>();
-    _gridHelper = locator<IGridHelper>();
+    // _colourHelper = locator<IColourHelper>();
+    // _colourMerger = locator<IColourMerger>();
+    // _gridHelper = locator<IGridHelper>();
 
-    _grid = _gridHelper.getAllCells();
-    
+    // _grid = _gridHelper.getAllcoordinates();
+
     notifyListeners();
   }
 
@@ -31,8 +30,8 @@ class GameViewModel with ChangeNotifier {
     notifyListeners();
   }
 
-  void selectCell(Colour colour) {
-    // Paint cell.
+  void selectcoordinate(Colour colour) {
+    // Paint Coordinate.
 
     // Paint neighbours.
     notifyListeners();

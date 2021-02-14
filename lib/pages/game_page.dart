@@ -17,12 +17,12 @@ class GamePage extends StatelessWidget {
         children: [
           Container(
             color: Colors.transparent,
-            padding: EdgeInsets.only(top: 15),
+            padding: EdgeInsets.only(top: 7),
             child: HexGridWidget(),
           ),
           Container(
             color: Colors.transparent,
-            padding: EdgeInsets.only(top: 15),
+            padding: EdgeInsets.only(top: 7),
             child: HexSelectWidget(),
           ),
         ],

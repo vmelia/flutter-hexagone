@@ -1,10 +1,11 @@
+import 'package:hexagone/contracts/i_colour_helper.dart';
 import 'package:hexagone/services/colour_helper.dart';
 import 'package:hexagone/types/Colour.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('ColourHelper Tests', () {
-    final ColourHelper _colourHelper = ColourHelper();
+    final IColourHelper _colourHelper = ColourHelper();
 
     test('isPrimary, when primary, returns true', () {
       expect(_colourHelper.isPrimary(Colour.Red), true);

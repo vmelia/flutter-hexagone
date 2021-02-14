@@ -6,8 +6,11 @@ class ColourMerger implements IColourMerger {
   ColourMerger() {
     _colourSets = List<List<Colour>>();
     _colourSets.add([Colour.Red, Colour.Red, Colour.White]);
+    _colourSets.add([Colour.Orange, Colour.Orange, Colour.White]);
     _colourSets.add([Colour.Yellow, Colour.Yellow, Colour.White]);
+    _colourSets.add([Colour.Green, Colour.Green, Colour.White]);
     _colourSets.add([Colour.Blue, Colour.Blue, Colour.White]);
+    _colourSets.add([Colour.Purple, Colour.Purple, Colour.White]);
 
     _colourSets.add([Colour.Red, Colour.Green, Colour.Black]);
     _colourSets.add([Colour.Yellow, Colour.Purple, Colour.Black]);

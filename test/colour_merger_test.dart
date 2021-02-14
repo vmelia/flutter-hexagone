@@ -12,37 +12,71 @@ void main() {
     });
 
     void _testMerge(Colour source, Colour target, Colour expected) {
-      var actual = _colourMerger.merge(source, target);
+      var actual1 = _colourMerger.merge(source, target);
+      var actual2 = _colourMerger.merge(target, source);
 
-      expect(actual, expected);
+      expect(actual1, expected);
+      expect(actual2, expected);
+    }
+
+    void _testMergesToWhite(Colour source) {
+      _testMerge(source, source, Colour.White);
+    }
+
+    void _testMergesFromWhite(Colour source) {
+      _testMerge(source, Colour.White, source);
+    }
+
+    void _testMergesToBlack(Colour source, Colour target) {
+      _testMerge(source, target, Colour.Black);
+    }
+
+    void _testMergesFromBlack(Colour source, Colour expected) {
+      _testMerge(source, Colour.Black, expected);
     }
 
     test('merge, when source and target match, cancels to white', () {
-      _testMerge(Colour.Red, Colour.Red, Colour.White);
-      _testMerge(Colour.Yellow, Colour.Yellow, Colour.White);
-      _testMerge(Colour.Blue, Colour.Blue, Colour.White);
+      _testMergesToWhite(Colour.Red);
+      _testMergesToWhite(Colour.Orange);
+      _testMergesToWhite(Colour.Yellow);
+      _testMergesToWhite(Colour.Green);
+      _testMergesToWhite(Colour.Blue);
+      _testMergesToWhite(Colour.Purple);
     });
 
     test('merge, when target is white, returns source colour', () {
-      _testMerge(Colour.Red, Colour.White, Colour.Red);
-      _testMerge(Colour.Yellow, Colour.White, Colour.Yellow);
-      _testMerge(Colour.Blue, Colour.White, Colour.Blue);
+      _testMergesFromWhite(Colour.Red);
+      _testMergesFromWhite(Colour.Orange);
+      _testMergesFromWhite(Colour.Yellow);
+      _testMergesFromWhite(Colour.Green);
+      _testMergesFromWhite(Colour.Blue);
+      _testMergesFromWhite(Colour.Purple);
+    });
+
+    test(
+        'merge, when merging primary and  secondary, and does not overlap, returns black',
+        () {
+      _testMergesToBlack(Colour.Red, Colour.Green);
+      _testMergesToBlack(Colour.Yellow, Colour.Purple);
+      _testMergesToBlack(Colour.Blue, Colour.Orange);
     });
 
     test('merge, when target is black, returns opposite colour', () {
-      _testMerge(Colour.Red, Colour.Black, Colour.Green);
-      _testMerge(Colour.Yellow, Colour.Black, Colour.Purple);
-      _testMerge(Colour.Blue, Colour.Black, Colour.Orange);
+      _testMergesFromBlack(Colour.Red, Colour.Green);
+      _testMergesFromBlack(Colour.Yellow, Colour.Purple);
+      _testMergesFromBlack(Colour.Blue, Colour.Orange);
     });
 
-    test('merge, when target is primary, returns correct secondary colour', () {
+    test(
+        'merge, when source and target are primary, returns correct secondary colour',
+        () {
       _testMerge(Colour.Red, Colour.Yellow, Colour.Orange);
       _testMerge(Colour.Yellow, Colour.Blue, Colour.Green);
       _testMerge(Colour.Blue, Colour.Red, Colour.Purple);
     });
 
     test(
-        'merge, when target is secondary, and overlaps, returns correct primary colour',
+        'merge, when merging primary and secondary, and does overlap, returns correct primary',
         () {
       _testMerge(Colour.Red, Colour.Orange, Colour.Yellow);
       _testMerge(Colour.Red, Colour.Purple, Colour.Blue);
@@ -50,13 +84,6 @@ void main() {
       _testMerge(Colour.Yellow, Colour.Green, Colour.Blue);
       _testMerge(Colour.Blue, Colour.Green, Colour.Yellow);
       _testMerge(Colour.Blue, Colour.Purple, Colour.Red);
-    });
-
-    test('merge, when target is secondary, and does not overlap, returns black',
-        () {
-      _testMerge(Colour.Red, Colour.Green, Colour.Black);
-      _testMerge(Colour.Yellow, Colour.Purple, Colour.Black);
-      _testMerge(Colour.Blue, Colour.Orange, Colour.Black);
     });
   });
 }

@@ -39,11 +39,20 @@ class GameViewModel with ChangeNotifier {
   }
 
   void selectCell(Coordinate coordinate) {
-    var cellColour = _grid[coordinate];
-    var newColour = _colourMerger.merge(_selectedColour, cellColour);
-    _grid[coordinate] = newColour;
+    processCell(coordinate);
 
-    // Paint neighbours.
+    var neighbours = _gridHelper.getNeighbours(_grid, coordinate);
+    for (final c in neighbours.keys) {
+      processCell(c);
+    }
+
     notifyListeners();
+  }
+
+  void processCell(Coordinate coordinate) {
+    var colour = _grid[coordinate];
+    var newColour = _colourMerger.merge(colour, _selectedColour);
+
+    _grid[coordinate] = newColour;
   }
 }

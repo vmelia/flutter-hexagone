@@ -19,15 +19,9 @@ class ColourHelper implements IColourHelper {
     if (colour == Colour.Green) return Colors.green;
     if (colour == Colour.Blue) return Colors.blue;
     if (colour == Colour.Purple) return Colors.purple;
-    if (colour == Colour.Black) return Colors.black;
+    if (colour == Colour.Black) return Colors.brown;
 
     return Colors.transparent;
-  }
-
-  bool isPrimary(Colour colour) {
-    return (colour == Colour.Red ||
-        colour == Colour.Yellow ||
-        colour == Colour.Blue);
   }
 
   Colour getRandomPrimaryColour() {

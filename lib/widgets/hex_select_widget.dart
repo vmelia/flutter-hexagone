@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 class HexSelectWidget extends StatelessWidget {
   final double _size = 100;
+  final double _notSelectedOpacity = 0.2;
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<GameViewModel>(context);
@@ -13,35 +14,41 @@ class HexSelectWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Opacity(
-          opacity: viewModel.selectedColour == Colour.Red ? 1.0 : 0.4,
+          opacity: viewModel.selectedColour == Colour.Red
+              ? 1.0
+              : _notSelectedOpacity,
           child: RawMaterialButton(
             constraints: BoxConstraints.expand(width: _size, height: _size),
             fillColor: Colors.red,
             shape: CircleBorder(),
             onPressed: () {
-              viewModel.selectColour(Colour.Red);
+              viewModel.selectedColour = Colour.Red;
             },
           ),
         ),
         Opacity(
-          opacity: viewModel.selectedColour == Colour.Yellow ? 1.0 : 0.4,
+          opacity: viewModel.selectedColour == Colour.Yellow
+              ? 1.0
+              : _notSelectedOpacity,
           child: RawMaterialButton(
             constraints: BoxConstraints.expand(width: _size, height: _size),
             fillColor: Colors.yellow,
             shape: CircleBorder(),
             onPressed: () {
-              viewModel.selectColour(Colour.Yellow);
+              viewModel.selectedColour = Colour.Yellow;
             },
           ),
         ),
         Opacity(
-          opacity: viewModel.selectedColour == Colour.Blue ? 1.0 : 0.4,
+          opacity: viewModel.selectedColour == Colour.Blue
+              ? 1.0
+              : _notSelectedOpacity,
           child: RawMaterialButton(
             constraints: BoxConstraints.expand(width: _size, height: _size),
             fillColor: Colors.blue,
             shape: CircleBorder(),
             onPressed: () {
-              viewModel.selectColour(Colour.Blue);
+              viewModel.selectedColour = Colour.Blue;
             },
           ),
         ),

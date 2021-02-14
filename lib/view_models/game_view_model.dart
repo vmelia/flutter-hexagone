@@ -29,7 +29,7 @@ class GameViewModel with ChangeNotifier {
 
   Colour get selectedColour => _selectedColour;
 
-  void selectColour(Colour colour) {
+  set selectedColour(Colour colour) {
     _selectedColour = colour;
 
     notifyListeners();

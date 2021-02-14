@@ -22,7 +22,7 @@ void main() {
       expect(_colourHelper.isPrimary(Colour.Orange), false);
       expect(_colourHelper.isPrimary(Colour.Green), false);
       expect(_colourHelper.isPrimary(Colour.Purple), false);
-      expect(_colourHelper.isPrimary(Colour.Brown), false);
+      expect(_colourHelper.isPrimary(Colour.Black), false);
     });
   });
 }

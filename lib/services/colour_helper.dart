@@ -19,7 +19,7 @@ class ColourHelper implements IColourHelper {
     if (colour == Colour.Green) return Colors.green;
     if (colour == Colour.Blue) return Colors.blue;
     if (colour == Colour.Purple) return Colors.purple;
-    if (colour == Colour.Brown) return Colors.brown;
+    if (colour == Colour.Black) return Colors.black;
 
     return Colors.transparent;
   }

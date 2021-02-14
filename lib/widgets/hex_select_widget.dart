@@ -24,9 +24,6 @@ class HexSelectWidget extends StatelessWidget {
             onPressed: () {
               viewModel.selectedColour = Colour.Red;
             },
-            onLongPress: () {
-              viewModel.initializeGame(3);
-            },
           ),
         ),
         Opacity(
@@ -40,9 +37,6 @@ class HexSelectWidget extends StatelessWidget {
             onPressed: () {
               viewModel.selectedColour = Colour.Yellow;
             },
-            onLongPress: () {
-              viewModel.initializeGame(6);
-            },
           ),
         ),
         Opacity(
@@ -55,9 +49,6 @@ class HexSelectWidget extends StatelessWidget {
             shape: CircleBorder(),
             onPressed: () {
               viewModel.selectedColour = Colour.Blue;
-            },
-            onLongPress: () {
-              viewModel.initializeGame(9);
             },
           ),
         ),

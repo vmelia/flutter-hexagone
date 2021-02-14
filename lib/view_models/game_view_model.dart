@@ -16,6 +16,9 @@ class GameViewModel with ChangeNotifier {
   Map<Coordinate, Colour> _grid;
   Colour _selectedColour;
 
+  int _idealMoveCount = 0;
+  int _actualMoveCount = 0;
+
   GameViewModel() {
     _colourHelper = locator<IColourHelper>();
     _colourMerger = locator<IColourMerger>();
@@ -24,6 +27,9 @@ class GameViewModel with ChangeNotifier {
 
     initializeGame(6); // Medium.
   }
+
+  int get idealMoveCount => _idealMoveCount;
+  int get actualMoveCount => _actualMoveCount;
 
   Colour get selectedColour => _selectedColour;
 
@@ -47,6 +53,7 @@ class GameViewModel with ChangeNotifier {
       processCell(c);
     }
 
+    _actualMoveCount++;
     notifyListeners();
   }
 
@@ -60,12 +67,14 @@ class GameViewModel with ChangeNotifier {
   void initializeGame(int iterations) {
     _grid = _gridHelper.createGrid();
     var randomCoordinates = _randomizer.getRandomCoordinates(_grid, iterations);
-    for(var randomCoordinate in randomCoordinates){
+    for (var randomCoordinate in randomCoordinates) {
       selectedColour = _randomizer.getRandomPrimaryColour();
       selectCell(randomCoordinate);
       print('${randomCoordinate.x}, ${randomCoordinate.y}, $selectedColour');
     }
 
+    _idealMoveCount = iterations;
+    _actualMoveCount = 0;
     selectedColour = null;
   }
 }

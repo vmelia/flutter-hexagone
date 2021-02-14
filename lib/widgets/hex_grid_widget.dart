@@ -27,7 +27,7 @@ class HexGridWidget extends StatelessWidget {
             onPressed: () {
               viewModel.selectCell(Coordinate(coordinates.q, coordinates.r));
             },
-            child: Text('${coordinates.q},${coordinates.r}'),
+            child: null,
             textColor: Colors.grey,
           ),
         ),

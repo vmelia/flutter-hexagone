@@ -14,42 +14,60 @@ class GamePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('HexaGone'),
       ),
-      body: Column(
-        children: [
-          Container(
-            color: Colors.transparent,
-            padding: EdgeInsets.only(top: 7),
-            child: MenuWidget(),
-          ),
-          Stack(
-            children: [
-              Container(
-                color: Colors.transparent,
-                padding: EdgeInsets.only(top: 7),
-                child: HexGridWidget(),
-              ),
-              Positioned(
-                  top: 15,
-                  left: 27,
-                  child: Text(
-                    "${viewModel.idealMoveCount}",
-                    textScaleFactor: 2.0,
-                  )),
-              Positioned(
-                  top: 15,
-                  right: 27,
-                  child: Text(
-                    "${viewModel.actualMoveCount}",
-                    textScaleFactor: 2.0,
-                  )),
-            ],
-          ),
-          Container(
-            color: Colors.transparent,
-            padding: EdgeInsets.only(top: 7),
-            child: HexSelectWidget(),
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              color: Colors.transparent,
+              padding: EdgeInsets.only(top: 7),
+              child: MenuWidget(),
+            ),
+            Stack(
+              children: [
+                Container(
+                  color: Colors.transparent,
+                  padding: EdgeInsets.only(top: 7),
+                  child: HexGridWidget(),
+                ),
+                Positioned(
+                    top: 5,
+                    left: 5,
+                    child: Column(
+                      children: [
+                        Text(
+                          "Aim",
+                          textScaleFactor: 2.0,
+                        ),
+                        Text(
+                          "${viewModel.idealMoveCount}",
+                          textScaleFactor: 2.0,
+                        ),
+                      ],
+                    )),
+                Positioned(
+                    top: 5,
+                    right: 5,
+                    child: Column(
+                      children: [
+                        Text(
+                          "Taken",
+                          textScaleFactor: 2.0,
+                        ),
+                        Text(
+                          "${viewModel.actualMoveCount}",
+                          textScaleFactor: 2.0,
+                        ),
+                      ],
+                    )),
+              ],
+            ),
+            Container(
+              color: Colors.transparent,
+              padding: EdgeInsets.only(top: 7),
+              child: HexSelectWidget(),
+            ),
+          ],
+        ),
       ),
     );
   }

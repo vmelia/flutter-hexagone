@@ -5,7 +5,11 @@ import 'package:hexagone/widgets/hex_select_widget.dart';
 import 'package:hexagone/widgets/menu_widget.dart';
 import 'package:provider/provider.dart';
 
+import 'help_page.dart';
+
 class GamePage extends StatelessWidget {
+  static String route = "GamePage";
+
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<GameViewModel>(context);
@@ -31,30 +35,49 @@ class GamePage extends StatelessWidget {
                 ),
                 Positioned(
                     top: 5,
+                    right: 5,
+                    child: FloatingActionButton.extended(
+                        label: Text(
+                          'i',
+                          textScaleFactor: 2.0,
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, HelpPage.route);
+                        },
+                        // child: Icon(
+                        //   Icons.help,
+                        // ),
+                        backgroundColor: Colors.grey)),
+                Positioned(
+                    top: 5,
                     left: 5,
                     child: Column(
                       children: [
                         Text(
-                          "Aim",
+                          "Moves",
+                          style: TextStyle(color: Colors.white),
                           textScaleFactor: 2.0,
                         ),
                         Text(
-                          "${viewModel.idealMoveCount}",
+                          "${viewModel.actualMoveCount}",
+                          style: TextStyle(color: Colors.white),
                           textScaleFactor: 2.0,
                         ),
                       ],
                     )),
                 Positioned(
-                    top: 5,
-                    right: 5,
+                    bottom: 5,
+                    left: 5,
                     child: Column(
                       children: [
                         Text(
-                          "Taken",
+                          "Aim",
+                          style: TextStyle(color: Colors.grey),
                           textScaleFactor: 2.0,
                         ),
                         Text(
-                          "${viewModel.actualMoveCount}",
+                          "${viewModel.idealMoveCount}",
+                          style: TextStyle(color: Colors.grey),
                           textScaleFactor: 2.0,
                         ),
                       ],

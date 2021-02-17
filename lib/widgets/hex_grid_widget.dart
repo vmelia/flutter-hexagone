@@ -44,6 +44,7 @@ class HexGridWidget extends StatelessWidget {
     );
   }
 
+  //ToDo: Move this!
   Future<bool> showAlertDialog(
       BuildContext context, GameViewModel viewModel) async {
     Widget newButton = FlatButton(
@@ -67,6 +68,7 @@ class HexGridWidget extends StatelessWidget {
 
     return await showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (BuildContext context) {
         return alert;
       },

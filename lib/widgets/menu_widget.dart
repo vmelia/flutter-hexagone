@@ -16,7 +16,8 @@ class MenuWidget extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           onPressed: () {},
           onLongPress: () {
-            viewModel.initializeGame(3);
+            viewModel.iterations = 3;
+            viewModel.startNewGame();
           },
         ),
         RaisedButton(
@@ -25,7 +26,8 @@ class MenuWidget extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           onPressed: () {},
           onLongPress: () {
-            viewModel.initializeGame(6);
+            viewModel.iterations = 6;
+            viewModel.startNewGame();
           },
         ),
         RaisedButton(
@@ -34,7 +36,8 @@ class MenuWidget extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           onPressed: () {},
           onLongPress: () {
-            viewModel.initializeGame(9);
+            viewModel.iterations = 9;
+            viewModel.startNewGame();
           },
         ),
       ],

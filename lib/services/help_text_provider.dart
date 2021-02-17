@@ -10,6 +10,9 @@ class HelpTextProvider implements IHelpTextProvider {
       _createSpacedTextSpan(
           "Long press on a difficulty level to start a new game."),
       _createSpacedTextSpan(
+          "You may do this at any time - to quit the current puzzle.",
+          bold: true),
+      _createSpacedTextSpan(
           "Tap on a primary colour to choose your painty weapon."),
       _createSpacedTextSpan("Tap a cell to update it and its neighbours."),
       _createSpacedTextSpan(
@@ -17,7 +20,8 @@ class HelpTextProvider implements IHelpTextProvider {
       _createSpacedTextSpan(
           "If the cell already contains the primary colour - it will be 'subtracted'."),
       _createSpacedTextSpan(
-          "The puzzle is solved when all the hexagons are white."),
+          "The puzzle is solved when all the hexagons are white.",
+          bold: true),
       _createHeaderTextSpan("Adding & subtracting colours"),
       _createSpacedTextSpan("Using the RED primary as an example:"),
       _createTextSpan("RED + WHITE = RED"),
@@ -43,6 +47,8 @@ class HelpTextProvider implements IHelpTextProvider {
         style: TextStyle(color: Colors.black, fontSize: 24),
       );
 
-  TextSpan _createSpacedTextSpan(String text) => TextSpan(text: "$text\n\n");
+  TextSpan _createSpacedTextSpan(String text, {bool bold = false}) => TextSpan(
+      text: "$text\n\n",
+      style: TextStyle(fontWeight: bold ? FontWeight.bold : FontWeight.normal));
   TextSpan _createTextSpan(String text) => TextSpan(text: "$text\n");
 }

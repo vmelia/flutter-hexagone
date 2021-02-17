@@ -14,10 +14,11 @@ class GameViewModel with ChangeNotifier {
   IRandomizer _randomizer;
 
   Map<Coordinate, Colour> _grid;
+  Map<Coordinate, Colour> _previousGrid;
   Colour _selectedColour;
 
-  int _idealMoveCount = 0;
-  int _actualMoveCount = 0;
+  int iterations = 6;
+  int _moves = 0;
 
   GameViewModel() {
     _colourHelper = locator<IColourHelper>();
@@ -25,11 +26,10 @@ class GameViewModel with ChangeNotifier {
     _gridHelper = locator<IGridHelper>();
     _randomizer = locator<IRandomizer>();
 
-    initializeGame(6); // Medium.
+    startNewGame();
   }
 
-  int get idealMoveCount => _idealMoveCount;
-  int get actualMoveCount => _actualMoveCount;
+  int get moves => _moves;
 
   Colour get selectedColour => _selectedColour;
 
@@ -53,7 +53,7 @@ class GameViewModel with ChangeNotifier {
       processCell(c);
     }
 
-    _actualMoveCount++;
+    _moves++;
     notifyListeners();
   }
 
@@ -64,8 +64,12 @@ class GameViewModel with ChangeNotifier {
     _grid[coordinate] = newColour;
   }
 
-  void initializeGame(int iterations) {
+  // Game initialization.
+  bool isGameOver() => _gridHelper.isAllwhite(_grid);
+
+  void startNewGame() {
     _grid = _gridHelper.createGrid();
+
     var randomCoordinates = _randomizer.getRandomCoordinates(_grid, iterations);
     for (var randomCoordinate in randomCoordinates) {
       selectedColour = _randomizer.getRandomPrimaryColour();
@@ -73,8 +77,15 @@ class GameViewModel with ChangeNotifier {
       print('${randomCoordinate.x}, ${randomCoordinate.y}, $selectedColour');
     }
 
-    _idealMoveCount = iterations;
-    _actualMoveCount = 0;
+    _moves = 0;
+    selectedColour = null;
+    _previousGrid = _gridHelper.copyGrid(_grid);
+  }
+
+  void replayLastGame() {
+    _grid = _gridHelper.copyGrid(_previousGrid);
+
+    _moves = 0;
     selectedColour = null;
   }
 }

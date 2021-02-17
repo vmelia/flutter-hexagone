@@ -24,15 +24,76 @@ class HexGridWidget extends StatelessWidget {
           child: FlatButton(
             color: Colors.transparent,
             shape: CircleBorder(),
-            onPressed: () {
+            onPressed: () async {
               viewModel.selectCell(Coordinate(coordinates.q, coordinates.r));
+              if (viewModel.isGameOver()) {
+                var replay = await showAlertDialog(context, viewModel);
+                if (replay) {
+                  viewModel.replayLastGame();
+                } else {
+                  viewModel.startNewGame();
+                }
+              }
             },
             child: null,
-            textColor: Colors.grey,
           ),
         ),
         // child: Text('${coordinates.q * coordinates.r}'),
         // Text('${coordinates.x}, ${coordinates.y}, ${coordinates.z}\n  ${coordinates.q}, ${coordinates.r}'),
+      ),
+    );
+  }
+
+  Future<bool> showAlertDialog(
+      BuildContext context, GameViewModel viewModel) async {
+    Widget newButton = FlatButton(
+      child: Text("New"),
+      onPressed: () => Navigator.pop(context, false),
+    );
+    Widget replayButton = FlatButton(
+      child: Text("Replay"),
+      onPressed: () => Navigator.pop(context, true),
+    );
+
+    AlertDialog alert = AlertDialog(
+      title: Text("Puzzle solved in ${viewModel.moves} moves"),
+      content:
+          Text("Would you like to play a new puzzle - or replay the last one?"),
+      actions: [
+        newButton,
+        replayButton,
+      ],
+    );
+
+    return await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+  Future<bool> showGameOverDialog(
+      BuildContext context, GameViewModel viewModel) async {
+    return await showDialog(
+      context: context,
+      child: AlertDialog(
+        title: Text("Puzzle solved in $viewModel.moves"),
+        content: Column(children: [
+          Text("Would you like to play a new puzzle - or replay the last one?"),
+          Row(
+            children: [
+              new FlatButton(
+                child: new Text("New"),
+                onPressed: () => Navigator.pop(context, false),
+              ),
+              new FlatButton(
+                child: new Text("Replay"),
+                onPressed: () => Navigator.pop(context, true),
+              ),
+            ],
+          ),
+        ]),
       ),
     );
   }

@@ -44,9 +44,6 @@ class GamePage extends StatelessWidget {
                         onPressed: () {
                           Navigator.pushNamed(context, HelpPage.route);
                         },
-                        // child: Icon(
-                        //   Icons.help,
-                        // ),
                         backgroundColor: Colors.grey)),
                 Positioned(
                     top: 5,
@@ -59,7 +56,7 @@ class GamePage extends StatelessWidget {
                           textScaleFactor: 2.0,
                         ),
                         Text(
-                          "${viewModel.actualMoveCount}",
+                          "${viewModel.moves}",
                           style: TextStyle(color: Colors.white),
                           textScaleFactor: 2.0,
                         ),
@@ -76,7 +73,7 @@ class GamePage extends StatelessWidget {
                           textScaleFactor: 2.0,
                         ),
                         Text(
-                          "${viewModel.idealMoveCount}",
+                          "${viewModel.iterations}",
                           style: TextStyle(color: Colors.grey),
                           textScaleFactor: 2.0,
                         ),

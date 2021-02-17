@@ -23,6 +23,15 @@ class GridHelper implements IGridHelper {
     return grid;
   }
 
+  Map<Coordinate, Colour> copyGrid(Map<Coordinate, Colour> grid) {
+    var newGrid = Map<Coordinate, Colour>();
+    for (final key in grid.keys) {
+      newGrid[key] = grid[key];
+    }
+
+    return newGrid;
+  }
+
   Map<Coordinate, Colour> getNeighbours(
       Map<Coordinate, Colour> grid, Coordinate coordinate) {
     var newGrid = Map<Coordinate, Colour>();
@@ -30,8 +39,11 @@ class GridHelper implements IGridHelper {
 
     for (final neighbouringCoordinate in neighbouringCoordinates) {
       newGrid[neighbouringCoordinate] = grid[neighbouringCoordinate];
-    }  
+    }
 
     return newGrid;
   }
+
+  bool isAllwhite(Map<Coordinate, Colour> grid) =>
+      !grid.values.any((x) => x != Colour.White);
 }

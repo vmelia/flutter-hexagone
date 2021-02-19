@@ -34,11 +34,16 @@ class GameViewModel with ChangeNotifier {
 
   int get moves => _moves;
   bool get hintMode => _hintMode;
+  set hintMode(bool value) {
+    _hintMode = value;
+
+    notifyListeners();
+  }
 
   Colour get selectedColour => _selectedColour;
 
-  set selectedColour(Colour colour) {
-    _selectedColour = colour;
+  set selectedColour(Colour value) {
+    _selectedColour = value;
 
     notifyListeners();
   }

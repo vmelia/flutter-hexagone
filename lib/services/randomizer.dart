@@ -38,7 +38,7 @@ class Randomizer implements IRandomizer {
 
   Coordinate _getRandomCoordinate(Grid _grid, List<Coordinate> alreadyChosen) {
     var coordinate = _getRandomCoordinatewithoutCheck();
-    while (!_grid.cells.containsKey(coordinate) ||
+    while (!_grid.contains(coordinate) ||
         alreadyChosen.contains(coordinate)) {
       coordinate = _getRandomCoordinatewithoutCheck();
     }

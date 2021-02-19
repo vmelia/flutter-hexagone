@@ -46,11 +46,11 @@ class GameViewModel with ChangeNotifier {
   }
 
   void selectCell(Coordinate coordinate) {
-    if (selectedColour == null) return; //ToDo: Neaten?
+    if (selectedColour == null) return;
 
     processCell(coordinate);
     var neighbours = _gridHelper.getNeighbours(_grid, coordinate);
-    for (final c in neighbours.cells.keys) {
+    for (final c in neighbours.coordinates) {
       processCell(c);
     }
 

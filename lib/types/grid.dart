@@ -11,13 +11,17 @@ class Grid {
     }
   }
 
-  Map<Coordinate, Colour> get cells => _cells;
-
   operator [](Coordinate coordinate) => _cells[coordinate];
 
   operator []=(coordinate, colour) {
     _cells[coordinate] = colour;
   }
+
+  Iterable<Coordinate> get coordinates => _cells.keys;
+
+  int get count => _cells.length;
+
+  bool contains(Coordinate coordinate) => _cells.containsKey(coordinate);
 
   bool isAllwhite() => !_cells.values.any((x) => x != Colour.White);
 }

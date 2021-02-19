@@ -17,9 +17,11 @@ class GameViewModel with ChangeNotifier {
   Grid _grid;
   Grid _previousGrid;
   Colour _selectedColour;
+  List<Coordinate> _randomPaintedCells;
 
   int iterations = 6;
   int _moves = 0;
+  bool _hintMode = false;
 
   GameViewModel() {
     _colourHelper = locator<IColourHelper>();
@@ -31,6 +33,7 @@ class GameViewModel with ChangeNotifier {
   }
 
   int get moves => _moves;
+  bool get hintMode => _hintMode;
 
   Colour get selectedColour => _selectedColour;
 
@@ -44,6 +47,8 @@ class GameViewModel with ChangeNotifier {
     var colour = _grid[coordinate];
     return _colourHelper.convert(colour);
   }
+
+  List<Coordinate> get randomPaintedCells => _randomPaintedCells;
 
   void selectCell(Coordinate coordinate) {
     if (selectedColour == null) return;
@@ -71,8 +76,8 @@ class GameViewModel with ChangeNotifier {
   void startNewGame() {
     _grid = _gridHelper.createGrid();
 
-    var randomCoordinates = _randomizer.getRandomCoordinates(_grid, iterations);
-    for (var randomCoordinate in randomCoordinates) {
+    _randomPaintedCells = _randomizer.getRandomCoordinates(_grid, iterations);
+    for (var randomCoordinate in randomPaintedCells) {
       selectedColour = _randomizer.getRandomPrimaryColour();
       selectCell(randomCoordinate);
       print('${randomCoordinate.x}, ${randomCoordinate.y}, $selectedColour');

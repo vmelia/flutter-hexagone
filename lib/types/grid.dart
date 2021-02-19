@@ -5,9 +5,10 @@ class Grid {
   Map<Coordinate, Colour> _cells = Map<Coordinate, Colour>();
 
   Grid();
+  
   Grid.copy(Grid grid) {
-    for (final key in _cells.keys) {
-      this[key] = grid[key];
+    for (final coordinate in grid.coordinates) {
+      this[coordinate] = grid[coordinate];
     }
   }
 
@@ -23,5 +24,5 @@ class Grid {
 
   bool contains(Coordinate coordinate) => _cells.containsKey(coordinate);
 
-  bool isAllwhite() => !_cells.values.any((x) => x != Colour.White);
+  bool isAllwhite() => _cells.values.every((x) => x == Colour.White);
 }

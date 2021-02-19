@@ -27,7 +27,7 @@ class HexGridWidget extends StatelessWidget {
             onPressed: () async {
               viewModel.selectCell(Coordinate(coordinates.q, coordinates.r));
               if (viewModel.isGameOver()) {
-                var replay = await showAlertDialog(context, viewModel);
+                var replay = await showGameOverDialog(context, viewModel);
                 if (replay) {
                   viewModel.replayLastGame();
                 } else {
@@ -35,34 +35,56 @@ class HexGridWidget extends StatelessWidget {
                 }
               }
             },
-            child: null,
+            child: viewModel.hintMode
+                ? Text(
+                    viewModel.randomPaintedCells
+                            .contains(Coordinate(coordinates.q, coordinates.r))
+                        ? 'x'
+                        : '',
+                  )
+                : null,
           ),
         ),
-        // child: Text('${coordinates.q * coordinates.r}'),
-        // Text('${coordinates.x}, ${coordinates.y}, ${coordinates.z}\n  ${coordinates.q}, ${coordinates.r}'),
       ),
     );
   }
 
   //ToDo: Move this!
-  Future<bool> showAlertDialog(
+  Future<bool> showGameOverDialog(
       BuildContext context, GameViewModel viewModel) async {
-    Widget newButton = FlatButton(
-      child: Text("New"),
-      onPressed: () => Navigator.pop(context, false),
-    );
-    Widget replayButton = FlatButton(
-      child: Text("Replay"),
-      onPressed: () => Navigator.pop(context, true),
-    );
-
     AlertDialog alert = AlertDialog(
       title: Text("Puzzle solved in ${viewModel.moves} moves"),
       content:
           Text("Would you like to play a new puzzle - or replay the last one?"),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20.0))),
+      elevation: 12.0,
+      backgroundColor: Colors.cyan,
       actions: [
-        newButton,
-        replayButton,
+        RaisedButton(
+          child: Text("New", style: TextStyle(color: Colors.black)),
+          onPressed: () => Navigator.pop(context, false),
+          elevation: 24,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10.0),
+            topRight: Radius.circular(10.0),
+            bottomLeft: Radius.circular(10.0),
+            bottomRight: Radius.circular(10.0),
+          )),
+        ),
+        RaisedButton(
+          child: Text("Replay", style: TextStyle(color: Colors.black)),
+          onPressed: () => Navigator.pop(context, true),
+          elevation: 24,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(10.0),
+            topRight: Radius.circular(10.0),
+            bottomLeft: Radius.circular(10.0),
+            bottomRight: Radius.circular(10.0),
+          )),
+        ),
       ],
     );
 
@@ -72,31 +94,6 @@ class HexGridWidget extends StatelessWidget {
       builder: (BuildContext context) {
         return alert;
       },
-    );
-  }
-
-  Future<bool> showGameOverDialog(
-      BuildContext context, GameViewModel viewModel) async {
-    return await showDialog(
-      context: context,
-      child: AlertDialog(
-        title: Text("Puzzle solved in $viewModel.moves"),
-        content: Column(children: [
-          Text("Would you like to play a new puzzle - or replay the last one?"),
-          Row(
-            children: [
-              new FlatButton(
-                child: new Text("New"),
-                onPressed: () => Navigator.pop(context, false),
-              ),
-              new FlatButton(
-                child: new Text("Replay"),
-                onPressed: () => Navigator.pop(context, true),
-              ),
-            ],
-          ),
-        ]),
-      ),
     );
   }
 }

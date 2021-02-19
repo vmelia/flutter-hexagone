@@ -17,25 +17,25 @@ void main() {
     });
 
     test('createGrid, when called, returns nineteen values', () {
-      expect(_grid.length, 19);
+      expect(_grid.cells.length, 19);
     });
 
     test('getNeighbours, when within edge, returns six values', () {
       var neighbours = _gridHelper.getNeighbours(_grid, Coordinate(0, -1));
 
-      expect(neighbours.length, 6);
+      expect(neighbours.cells.length, 6);
     });
 
     test('getNeighbours, when on edge, returns four values', () {
       var neighbours = _gridHelper.getNeighbours(_grid, Coordinate(-1, -1));
 
-      expect(neighbours.length, 4);
+      expect(neighbours.cells.length, 4);
     });
 
     test('getNeighbours, when on corner, returns three values', () {
       var neighbours = _gridHelper.getNeighbours(_grid, Coordinate(0, -2));
 
-      expect(neighbours.length, 3);
+      expect(neighbours.cells.length, 3);
     });
   });
 }

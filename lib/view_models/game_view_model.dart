@@ -50,7 +50,7 @@ class GameViewModel with ChangeNotifier {
 
     processCell(coordinate);
     var neighbours = _gridHelper.getNeighbours(_grid, coordinate);
-    for (final c in neighbours.keys) {
+    for (final c in neighbours.cells.keys) {
       processCell(c);
     }
 
@@ -66,7 +66,7 @@ class GameViewModel with ChangeNotifier {
   }
 
   // Game initialization.
-  bool isGameOver() => _gridHelper.isAllwhite(_grid);
+  bool isGameOver() => _grid.isAllwhite();
 
   void startNewGame() {
     _grid = _gridHelper.createGrid();
@@ -80,11 +80,11 @@ class GameViewModel with ChangeNotifier {
 
     _moves = 0;
     selectedColour = null;
-    _previousGrid = _gridHelper.copyGrid(_grid);
+    _previousGrid = Grid.copy(_grid);
   }
 
   void replayLastGame() {
-    _grid = _gridHelper.copyGrid(_previousGrid);
+    _grid = Grid.copy(_previousGrid);
 
     _moves = 0;
     selectedColour = null;

@@ -24,15 +24,6 @@ class GridHelper implements IGridHelper {
     return grid;
   }
 
-  Grid copyGrid(Grid grid) {
-    var newGrid = Grid();
-    for (final key in grid.keys) {
-      newGrid[key] = grid[key];
-    }
-
-    return newGrid;
-  }
-
   Grid getNeighbours(Grid grid, Coordinate coordinate) {
     var newGrid = Grid();
     var neighbouringCoordinates = _coordinateHelper.getNeighbours(coordinate);
@@ -43,6 +34,4 @@ class GridHelper implements IGridHelper {
 
     return newGrid;
   }
-
-  bool isAllwhite(Grid grid) => !grid.values.any((x) => x != Colour.White);
 }

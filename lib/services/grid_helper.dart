@@ -2,6 +2,7 @@ import 'package:hexagone/contracts/i_coordinate_helper.dart';
 import 'package:hexagone/contracts/i_grid_helper.dart';
 import 'package:hexagone/types/colour.dart';
 import 'package:hexagone/types/coordinate.dart';
+import 'package:hexagone/types/grid.dart';
 import '../locator.dart';
 
 class GridHelper implements IGridHelper {
@@ -14,8 +15,8 @@ class GridHelper implements IGridHelper {
     _allCoordinates = _coordinateHelper.getCoordinatesInRange(_maximumRange);
   }
 
-  Map<Coordinate, Colour> createGrid() {
-    var grid = Map<Coordinate, Colour>();
+  Grid createGrid() {
+    var grid = Grid();
     for (final coordinate in _allCoordinates) {
       grid[coordinate] = Colour.White;
     }
@@ -23,8 +24,8 @@ class GridHelper implements IGridHelper {
     return grid;
   }
 
-  Map<Coordinate, Colour> copyGrid(Map<Coordinate, Colour> grid) {
-    var newGrid = Map<Coordinate, Colour>();
+  Grid copyGrid(Grid grid) {
+    var newGrid = Grid();
     for (final key in grid.keys) {
       newGrid[key] = grid[key];
     }
@@ -32,9 +33,8 @@ class GridHelper implements IGridHelper {
     return newGrid;
   }
 
-  Map<Coordinate, Colour> getNeighbours(
-      Map<Coordinate, Colour> grid, Coordinate coordinate) {
-    var newGrid = Map<Coordinate, Colour>();
+  Grid getNeighbours(Grid grid, Coordinate coordinate) {
+    var newGrid = Grid();
     var neighbouringCoordinates = _coordinateHelper.getNeighbours(coordinate);
 
     for (final neighbouringCoordinate in neighbouringCoordinates) {
@@ -44,6 +44,5 @@ class GridHelper implements IGridHelper {
     return newGrid;
   }
 
-  bool isAllwhite(Map<Coordinate, Colour> grid) =>
-      !grid.values.any((x) => x != Colour.White);
+  bool isAllwhite(Grid grid) => !grid.values.any((x) => x != Colour.White);
 }

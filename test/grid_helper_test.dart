@@ -1,15 +1,15 @@
 import 'package:hexagone/contracts/i_grid_helper.dart';
 import 'package:hexagone/locator.dart';
 import 'package:hexagone/services/grid_helper.dart';
-import 'package:hexagone/types/colour.dart';
 import 'package:hexagone/types/coordinate.dart';
+import 'package:hexagone/types/grid.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('GridHelper Tests', () {
     setupLocator();
     IGridHelper _gridHelper;
-    Map<Coordinate, Colour> _grid;
+    Grid _grid;
 
     setUp(() {
       _gridHelper = GridHelper();

@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:hexagone/contracts/i_randomizer.dart';
 import 'package:hexagone/types/coordinate.dart';
 import 'package:hexagone/types/colour.dart';
+import 'package:hexagone/types/grid.dart';
 
 class Randomizer implements IRandomizer {
   Random _random;
@@ -10,8 +11,7 @@ class Randomizer implements IRandomizer {
     _random = new Random();
   }
 
-  List<Coordinate> getRandomCoordinates(
-      Map<Coordinate, Colour> _grid, int count) {
+  List<Coordinate> getRandomCoordinates(Grid _grid, int count) {
     var coordinates = List<Coordinate>();
     for (var i = 0; i < count; i++) {
       var potentialCoordinate = _getRandomCoordinate(_grid, coordinates);
@@ -36,8 +36,7 @@ class Randomizer implements IRandomizer {
     return Colour.values[r];
   }
 
-  Coordinate _getRandomCoordinate(
-      Map<Coordinate, Colour> _grid, List<Coordinate> alreadyChosen) {
+  Coordinate _getRandomCoordinate(Grid _grid, List<Coordinate> alreadyChosen) {
     var coordinate = _getRandomCoordinatewithoutCheck();
     while (
         !_grid.containsKey(coordinate) || alreadyChosen.contains(coordinate)) {

@@ -1,10 +1,9 @@
-import 'package:hexagone/types/colour.dart';
 import 'package:hexagone/types/coordinate.dart';
+import 'package:hexagone/types/grid.dart';
 
 abstract class IGridHelper {
-  Map<Coordinate, Colour> createGrid();  
-  Map<Coordinate, Colour> copyGrid(Map<Coordinate, Colour> grid);
-  Map<Coordinate, Colour> getNeighbours(
-      Map<Coordinate, Colour> grid, Coordinate coordinate);
-  bool isAllwhite(Map<Coordinate, Colour> grid);
+  Grid createGrid();
+  Grid copyGrid(Grid grid);
+  Grid getNeighbours(Grid grid, Coordinate coordinate);
+  bool isAllwhite(Grid grid);
 }

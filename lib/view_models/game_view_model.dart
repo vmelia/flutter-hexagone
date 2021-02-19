@@ -5,6 +5,7 @@ import 'package:hexagone/contracts/i_grid_helper.dart';
 import 'package:hexagone/contracts/i_randomizer.dart';
 import 'package:hexagone/types/colour.dart';
 import 'package:hexagone/types/coordinate.dart';
+import 'package:hexagone/types/grid.dart';
 import '../locator.dart';
 
 class GameViewModel with ChangeNotifier {
@@ -13,8 +14,8 @@ class GameViewModel with ChangeNotifier {
   IGridHelper _gridHelper;
   IRandomizer _randomizer;
 
-  Map<Coordinate, Colour> _grid;
-  Map<Coordinate, Colour> _previousGrid;
+  Grid _grid;
+  Grid _previousGrid;
   Colour _selectedColour;
 
   int iterations = 6;

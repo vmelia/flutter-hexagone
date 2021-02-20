@@ -61,29 +61,29 @@ class HexGridWidget extends StatelessWidget {
       elevation: 12.0,
       backgroundColor: Colors.cyan,
       actions: [
-        RaisedButton(
-          child: Text("New", style: TextStyle(color: Colors.black)),
-          onPressed: () => Navigator.pop(context, false),
-          elevation: 24,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10.0),
-            topRight: Radius.circular(10.0),
-            bottomLeft: Radius.circular(10.0),
-            bottomRight: Radius.circular(10.0),
-          )),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: RaisedButton(
+            child: Text("New", style: TextStyle(color: Colors.black)),
+            onPressed: () => Navigator.pop(context, false),
+            elevation: 24,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+              Radius.circular(10.0),
+            )),
+          ),
         ),
-        RaisedButton(
-          child: Text("Replay", style: TextStyle(color: Colors.black)),
-          onPressed: () => Navigator.pop(context, true),
-          elevation: 24,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(10.0),
-            topRight: Radius.circular(10.0),
-            bottomLeft: Radius.circular(10.0),
-            bottomRight: Radius.circular(10.0),
-          )),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: RaisedButton(
+            child: Text("Replay", style: TextStyle(color: Colors.black)),
+            onPressed: () => Navigator.pop(context, true),
+            elevation: 24,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(
+              Radius.circular(10.0),
+            )),
+          ),
         ),
       ],
     );

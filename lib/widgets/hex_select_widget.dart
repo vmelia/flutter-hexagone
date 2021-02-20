@@ -9,50 +9,61 @@ class HexSelectWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<GameViewModel>(context);
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Opacity(
-          opacity: viewModel.selectedColour == Colour.Red
-              ? 1.0
-              : _notSelectedOpacity,
-          child: RawMaterialButton(
-            constraints: BoxConstraints.expand(width: _size, height: _size),
-            fillColor: Colors.red,
-            shape: CircleBorder(),
-            onPressed: () {
-              viewModel.selectedColour = Colour.Red;
-            },
+    return Column(children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        // crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Opacity(
+            opacity: viewModel.selectedColour == Colour.Red
+                ? 1.0
+                : _notSelectedOpacity,
+            child: RawMaterialButton(
+              constraints: BoxConstraints.expand(width: _size, height: _size),
+              fillColor: Colors.red,
+              shape: CircleBorder(),
+              onPressed: () {
+                viewModel.selectedColour = Colour.Red;
+              },
+            ),
+          ),
+          Opacity(
+            opacity: viewModel.selectedColour == Colour.Yellow
+                ? 1.0
+                : _notSelectedOpacity,
+            child: RawMaterialButton(
+              constraints: BoxConstraints.expand(width: _size, height: _size),
+              fillColor: Colors.yellow,
+              shape: CircleBorder(),
+              onPressed: () {
+                viewModel.selectedColour = Colour.Yellow;
+              },
+            ),
+          ),
+          Opacity(
+            opacity: viewModel.selectedColour == Colour.Blue
+                ? 1.0
+                : _notSelectedOpacity,
+            child: RawMaterialButton(
+              constraints: BoxConstraints.expand(width: _size, height: _size),
+              fillColor: Colors.blue,
+              shape: CircleBorder(),
+              onPressed: () {
+                viewModel.selectedColour = Colour.Blue;
+              },
+            ),
+          ),
+        ],
+      ),
+      Visibility(
+        visible: viewModel.selectedColour == null,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Text(
+            "Choose a primary colour",
           ),
         ),
-        Opacity(
-          opacity: viewModel.selectedColour == Colour.Yellow
-              ? 1.0
-              : _notSelectedOpacity,
-          child: RawMaterialButton(
-            constraints: BoxConstraints.expand(width: _size, height: _size),
-            fillColor: Colors.yellow,
-            shape: CircleBorder(),
-            onPressed: () {
-              viewModel.selectedColour = Colour.Yellow;
-            },
-          ),
-        ),
-        Opacity(
-          opacity: viewModel.selectedColour == Colour.Blue
-              ? 1.0
-              : _notSelectedOpacity,
-          child: RawMaterialButton(
-            constraints: BoxConstraints.expand(width: _size, height: _size),
-            fillColor: Colors.blue,
-            shape: CircleBorder(),
-            onPressed: () {
-              viewModel.selectedColour = Colour.Blue;
-            },
-          ),
-        ),
-      ],
-    );
+      ),
+    ]);
   }
 }

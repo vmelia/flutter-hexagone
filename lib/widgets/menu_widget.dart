@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hexagone/constants.dart';
 import 'package:hexagone/view_models/game_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +17,7 @@ class MenuWidget extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           onPressed: () {},
           onLongPress: () {
-            viewModel.iterations = 4;
+            viewModel.iterations = easyLevel;
             viewModel.startNewGame();
           },
         ),
@@ -26,7 +27,7 @@ class MenuWidget extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           onPressed: () {},
           onLongPress: () {
-            viewModel.iterations = 6;
+            viewModel.iterations = mediumLevel;
             viewModel.startNewGame();
           },
         ),
@@ -36,7 +37,7 @@ class MenuWidget extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           onPressed: () {},
           onLongPress: () {
-            viewModel.iterations = 9;
+            viewModel.iterations = hardLevel;
             viewModel.startNewGame();
           },
         ),

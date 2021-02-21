@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hexagone/constants.dart';
 import 'package:hexagone/widgets/help_widgets.dart';
 
 class HelpPage extends StatelessWidget {
@@ -9,7 +10,7 @@ class HelpPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.blueGrey,
       appBar: AppBar(
-        title: Text('HexaGone'),
+        title: Text('HexaGone - $versionNumber'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -44,9 +45,10 @@ class HelpPage extends StatelessWidget {
             TextLineWidget(
                 "Brown = The secondary colour that doesn't contain the primary"),
             HeaderLineWidget("Difficulty Levels"),
-            TextLineWidget("Easy: Can be done in 4 moves."),
-            TextLineWidget("Medium: Can be done in 6 moves."),
-            TextLineWidget("Hard: Can be done in 9 moves (good luck)."),
+            TextLineWidget("Easy: Can be done in $easyLevel moves."),
+            TextLineWidget("Medium: Can be done in $mediumLevel moves."),
+            TextLineWidget(
+                "Hard: Can be done in $hardLevel moves (good luck)."),
             HeaderLineWidget("Colour Chart"),
             ColourLineWidget(Colors.red, Colors.white, Colors.red),
             ColourLineWidget(Colors.yellow, Colors.white, Colors.yellow),

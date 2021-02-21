@@ -19,7 +19,7 @@ class GameViewModel with ChangeNotifier {
   Colour _selectedColour;
   List<Coordinate> _randomPaintedCells;
 
-  int iterations = 6;
+  int iterations = 4;
   int _moves = 0;
   bool _hintMode = false;
 

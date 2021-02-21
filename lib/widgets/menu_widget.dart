@@ -16,7 +16,7 @@ class MenuWidget extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           onPressed: () {},
           onLongPress: () {
-            viewModel.iterations = 3;
+            viewModel.iterations = 4;
             viewModel.startNewGame();
           },
         ),

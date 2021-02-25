@@ -6,8 +6,7 @@ class ExamplePage extends StatefulWidget {
   _ExamplePageState createState() => _ExamplePageState();
 }
 
-class _ExamplePageState extends State<ExamplePage>
-    with TickerProviderStateMixin {
+class _ExamplePageState extends State<ExamplePage> with TickerProviderStateMixin {
   int depth = 1;
   List<int> depths = [0, 1, 2, 3, 4];
   HexagonType type = HexagonType.FLAT;
@@ -85,8 +84,7 @@ class _ExamplePageState extends State<ExamplePage>
                       child: Card(
                         margin: EdgeInsets.all(8.0),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 2.0, horizontal: 16.0),
+                          padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 16.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -123,10 +121,7 @@ class _ExamplePageState extends State<ExamplePage>
                                         ))
                                     .toList(),
                                 selectedItemBuilder: (context) {
-                                  return depths
-                                      .map((e) =>
-                                          Center(child: Text('Depth: $e')))
-                                      .toList();
+                                  return depths.map((e) => Center(child: Text('Depth: $e'))).toList();
                                 },
                               ),
                             ],

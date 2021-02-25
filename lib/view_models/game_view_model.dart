@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:hexagone/constants.dart';
 import 'package:hexagone/contracts/i_colour_helper.dart';
 import 'package:hexagone/contracts/i_colour_merger.dart';
 import 'package:hexagone/contracts/i_grid_helper.dart';
 import 'package:hexagone/contracts/i_randomizer.dart';
 import 'package:hexagone/types/colour.dart';
 import 'package:hexagone/types/coordinate.dart';
+import 'package:hexagone/types/difficulty.dart';
 import 'package:hexagone/types/grid.dart';
 import '../locator.dart';
 
@@ -20,7 +20,7 @@ class GameViewModel with ChangeNotifier {
   Colour _selectedColour;
   List<Coordinate> _randomPaintedCells;
 
-  int iterations = mediumLevel;
+  int iterations = Difficulty.medium.value;
   int _moves = 0;
   bool _hintMode = false;
 

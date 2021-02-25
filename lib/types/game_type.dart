@@ -1,3 +1,3 @@
 enum GameType{
-  Replay, NewGame
+  Replay, NewGame,
 }

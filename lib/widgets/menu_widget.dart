@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hexagone/constants.dart';
+import 'package:hexagone/types/difficulty.dart';
 import 'package:hexagone/view_models/game_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -12,32 +12,29 @@ class MenuWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         RaisedButton(
-          child: Text('Easy'),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          child: Text(Difficulty.easy.text),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           onPressed: () {},
           onLongPress: () {
-            viewModel.iterations = easyLevel;
+            viewModel.iterations = Difficulty.easy.value;
             viewModel.startNewGame();
           },
         ),
         RaisedButton(
-          child: Text('Medium'),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          child: Text(Difficulty.medium.text),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           onPressed: () {},
           onLongPress: () {
-            viewModel.iterations = mediumLevel;
+            viewModel.iterations = Difficulty.medium.value;
             viewModel.startNewGame();
           },
         ),
         RaisedButton(
-          child: Text('Hard'),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          child: Text(Difficulty.hard.text),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
           onPressed: () {},
           onLongPress: () {
-            viewModel.iterations = hardLevel;
+            viewModel.iterations = Difficulty.hard.value;
             viewModel.startNewGame();
           },
         ),

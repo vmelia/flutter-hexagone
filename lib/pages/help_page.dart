@@ -36,7 +36,7 @@ class HelpPage extends StatelessWidget {
             TextLineWidget("A different primary colour => A secondary colour"),
             TextLineWidget("A secondary colour already containing the primary => Removes the primary"),
             TextLineWidget("A secondary colour not containing the primary => Brown"),
-            TextLineWidget("Brown = The secondary colour that doesn't contain the primary"),
+            TextLineWidget("Brown => The secondary colour that doesn't contain the primary"),
             HeaderLineWidget("Difficulty Levels"),
             TextLineWidget("Easy: Can be done in ${Difficulty.easy.value} moves."),
             TextLineWidget("Medium: Can be done in ${Difficulty.medium.value} moves."),

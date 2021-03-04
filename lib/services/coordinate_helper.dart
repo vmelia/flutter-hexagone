@@ -10,7 +10,7 @@ class CoordinateHelper implements ICoordinateHelper {
   }
 
   Iterable<Coordinate> getCoordinatesInRange(int range) {
-    var coordinates = List<Coordinate>();
+    var coordinates = <Coordinate>[];
     for (var x = -range; x <= range; x++) {
       for (var y = -range; y <= range; y++) {
         var coordinate = Coordinate(x, y);
@@ -22,21 +22,19 @@ class CoordinateHelper implements ICoordinateHelper {
   }
 
   Iterable<Coordinate> getNeighbourOffsets() {
-    final offsets = List<Coordinate>();
+    final offsets = <Coordinate>[];
     final coordinates = getCoordinatesInRange(1);
     for (final coordinate in coordinates) {
-      if (coordinate.x != coordinate.y) if (_exists(coordinate))
-        offsets.add(coordinate);
+      if (coordinate.x != coordinate.y) if (_exists(coordinate)) offsets.add(coordinate);
     }
 
     return offsets;
   }
 
   List<Coordinate> getNeighbours(Coordinate coordinate) {
-    var coordinates = List<Coordinate>();
+    var coordinates = <Coordinate>[];
     for (final o in _neighbourOffsets) {
-      var potentialNeighbour =
-          Coordinate(coordinate.x + o.x, coordinate.y + o.y);
+      var potentialNeighbour = Coordinate(coordinate.x + o.x, coordinate.y + o.y);
       if (_exists(potentialNeighbour)) coordinates.add(potentialNeighbour);
     }
 
@@ -45,10 +43,8 @@ class CoordinateHelper implements ICoordinateHelper {
 
   //ToDo: This doesn't belong here. It's more a grid thing.
   bool _exists(Coordinate coordinate) {
-    if (coordinate.x < -_maximumRange || coordinate.x > _maximumRange)
-      return false;
-    if (coordinate.y < -_maximumRange || coordinate.y > _maximumRange)
-      return false;
+    if (coordinate.x < -_maximumRange || coordinate.x > _maximumRange) return false;
+    if (coordinate.y < -_maximumRange || coordinate.y > _maximumRange) return false;
 
     if (coordinate.x == 1 && coordinate.y == 2) return false;
     if (coordinate.x == 2 && coordinate.y == 1) return false;

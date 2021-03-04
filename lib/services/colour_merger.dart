@@ -4,7 +4,7 @@ import 'package:hexagone/types/colour.dart';
 class ColourMerger implements IColourMerger {
   List<List<Colour>> _colourSets;
   ColourMerger() {
-    _colourSets = List<List<Colour>>();
+    _colourSets = <List<Colour>>[];
     _colourSets.add([Colour.Red, Colour.Red, Colour.White]);
     _colourSets.add([Colour.Orange, Colour.Orange, Colour.White]);
     _colourSets.add([Colour.Yellow, Colour.Yellow, Colour.White]);

@@ -36,20 +36,24 @@ class GamePage extends StatelessWidget {
                 Positioned(
                     top: 5,
                     right: 0,
-                    child: RaisedButton(
-                        child: Text(
-                          "i",
-                          style: TextStyle(color: Colors.white),
-                          textScaleFactor: 2.0,
-                        ),
+                    child: ElevatedButton(
+                      child: Text(
+                        "i",
+                        style: TextStyle(color: Colors.white),
+                        textScaleFactor: 2.0,
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.grey,
+                        side: BorderSide(),
                         shape: CircleBorder(),
-                        onPressed: () {
-                          Navigator.pushNamed(context, HelpPage.route);
-                        },
-                        onLongPress: () {
-                          viewModel.hintMode = !viewModel.hintMode;
-                        },
-                        color: Colors.grey)),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context, HelpPage.route);
+                      },
+                      onLongPress: () {
+                        viewModel.hintMode = !viewModel.hintMode;
+                      },
+                    )),
                 Positioned(
                     top: 5,
                     left: 5,

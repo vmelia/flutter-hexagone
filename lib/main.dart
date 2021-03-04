@@ -29,7 +29,6 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider<GameViewModel>(create: (_) => GameViewModel()),
         ],
         child: GamePage(),
-        //child: ExamplePage(),
       ),
     );
   }

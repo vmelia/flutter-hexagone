@@ -40,7 +40,6 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       if (selectedColour == null) return;
       gameEngine.selectCell(game.grid, event.coordinate, selectedColour);
       movesTaken++;
-
       yield GridUpdatedState();
       if (game.grid.isAllwhite()) {
         yield GameOverState(movesTaken);

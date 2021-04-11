@@ -9,7 +9,7 @@ abstract class GameEvent extends Equatable {
 
 class NewGameEvent extends GameEvent {
   final Difficulty difficulty;
-  NewGameEvent({this.difficulty = Difficulty.medium});
+  NewGameEvent(this.difficulty);
 }
 
 class ReplayGameEvent extends GameEvent {

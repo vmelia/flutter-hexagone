@@ -38,7 +38,7 @@ Widget _buildWidget(BuildContext context) {
               child: Text('New Puzzle'),
               style: buttonStyle(),
               onPressed: () {
-                context.read<GameBloc>().add(NewGameEvent());
+                context.read<GameBloc>().add(NewGameEvent(gameBloc.game.difficulty));
                 Navigator.pop(context);
               },
             ),

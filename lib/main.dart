@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexagone/pages/game_over_page.dart';
 import 'package:hexagone/route_builder.dart';
+import 'package:hexagone/types/difficulty.dart';
 import 'bloc/game_bloc.dart';
 import 'pages/game_page.dart';
 import 'constants.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<GameBloc>(
-      create: (context) => GameBloc()..add(NewGameEvent()),
+      create: (context) => GameBloc()..add(NewGameEvent(Difficulty.medium)),
       child: MaterialApp(
         onGenerateRoute: (settings) {
           return routeBuilder.generateRoute(context, settings);

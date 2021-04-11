@@ -44,7 +44,7 @@ class DifficultyWidget extends StatelessWidget {
         ),
         onPressed: () {},
         onLongPress: () {
-          context.read<GameBloc>().add(NewGameEvent(difficulty: difficulty));
+          context.read<GameBloc>().add(NewGameEvent(difficulty));
         },
       ),
     );

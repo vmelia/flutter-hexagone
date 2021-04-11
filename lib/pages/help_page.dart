@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:hexagone/constants.dart';
-import 'package:hexagone/types/difficulty.dart';
-import 'package:hexagone/widgets/help_widgets.dart';
+import '../constants.dart';
+import '../types/difficulty.dart';
+import '../widgets/help_widgets.dart';
 
 class HelpPage extends StatelessWidget {
-  static String route = "HelpPage";
+  static String route = 'HelpPage';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey,
       appBar: AppBar(
-        title: Text('HexaGone - $versionNumber'),
+        title: Text('$appName - $versionNumber'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -38,9 +38,9 @@ class HelpPage extends StatelessWidget {
             TextLineWidget("A secondary colour not containing the primary => Brown"),
             TextLineWidget("Brown => The secondary colour that doesn't contain the primary"),
             HeaderLineWidget("Difficulty Levels"),
-            TextLineWidget("Easy: Can be done in ${Difficulty.easy.value} moves."),
-            TextLineWidget("Medium: Can be done in ${Difficulty.medium.value} moves."),
-            TextLineWidget("Hard: Can be done in ${Difficulty.hard.value} moves (good luck)."),
+            TextLineWidget("Easy: Can be done in ${Difficulty.easy.entropy} moves."),
+            TextLineWidget("Medium: Can be done in ${Difficulty.medium.entropy} moves."),
+            TextLineWidget("Hard: Can be done in ${Difficulty.hard.entropy} moves (good luck!)."),
             HeaderLineWidget("Colour Chart"),
             ColourLineWidget(Colors.red, Colors.white, Colors.red),
             ColourLineWidget(Colors.yellow, Colors.white, Colors.yellow),

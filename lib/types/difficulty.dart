@@ -1,8 +1,8 @@
 class Difficulty {
   final String text;
-  final int value;
+  final int entropy;
 
-  const Difficulty._internal(this.text, this.value);
+  const Difficulty._internal(this.text, this.entropy);
   toString() => 'Enum.$text';
 
   static const easy = const Difficulty._internal('Easy', 4);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hexagone/pages/help_page.dart';
+import 'pages/game_over_page.dart';
+import 'pages/help_page.dart';
 
 class RouteBuilder {
   MaterialPageRoute generateRoute(BuildContext context, RouteSettings routeSettings) {
@@ -8,7 +9,11 @@ class RouteBuilder {
         return HelpPage();
       });
     }
-
+    else if (routeSettings.name == GameOverPage.route) {
+      return MaterialPageRoute(builder: (context) {
+        return GameOverPage();
+      });
+    }
     return null;
   }
 }

@@ -1,13 +1,18 @@
 import 'dart:math';
-import 'package:hexagone/contracts/i_randomizer.dart';
-import 'package:hexagone/types/coordinate.dart';
-import 'package:hexagone/types/colour.dart';
-import 'package:hexagone/types/grid.dart';
+import '../types/coordinate.dart';
+import '../types/colour.dart';
+import '../types/grid.dart';
 
-class Randomizer implements IRandomizer {
+abstract class Randomizer {
+  List<Coordinate> getRandomCoordinates(Grid _grid, int count);
+  Colour getRandomPrimaryColour();
+  Colour getRandomPrimaryOrSecondaryColour();
+}
+
+class RandomizerImpl implements Randomizer {
   Random _random;
 
-  Randomizer() {
+  RandomizerImpl() {
     _random = new Random();
   }
 

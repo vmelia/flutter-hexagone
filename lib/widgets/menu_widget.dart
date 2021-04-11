@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:hexagone/types/difficulty.dart';
-import 'package:hexagone/view_models/game_view_model.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../bloc/game_bloc.dart';
+import '../types/difficulty.dart';
 
 class MenuWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<GameViewModel>(context);
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        DifficultyWidget(viewModel: viewModel, difficulty: Difficulty.easy),
-        DifficultyWidget(viewModel: viewModel, difficulty: Difficulty.medium),
-        DifficultyWidget(viewModel: viewModel, difficulty: Difficulty.hard),
-      ],
-    );
+    return _buildWidget(context);
   }
+}
+
+Widget _buildWidget(BuildContext context) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceAround,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      DifficultyWidget(difficulty: Difficulty.easy),
+      DifficultyWidget(difficulty: Difficulty.medium),
+      DifficultyWidget(difficulty: Difficulty.hard),
+    ],
+  );
 }
 
 class DifficultyWidget extends StatelessWidget {
   const DifficultyWidget({
-    Key key,
-    @required this.viewModel,
     @required this.difficulty,
-  }) : super(key: key);
+  });
 
-  final GameViewModel viewModel;
   final Difficulty difficulty;
 
   @override
@@ -44,8 +44,7 @@ class DifficultyWidget extends StatelessWidget {
         ),
         onPressed: () {},
         onLongPress: () {
-          viewModel.iterations = difficulty.value;
-          viewModel.startNewGame();
+          context.read<GameBloc>().add(NewGameEvent(difficulty: difficulty));
         },
       ),
     );

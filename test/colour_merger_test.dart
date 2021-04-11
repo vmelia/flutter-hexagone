@@ -1,19 +1,12 @@
-import 'package:hexagone/contracts/i_colour_merger.dart';
-import 'package:hexagone/services/colour_merger.dart';
+import 'package:hexagone/extensions/colour_extension.dart';
 import 'package:hexagone/types/colour.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('ColourMerger Tests', () {
-    IColourMerger _colourMerger;
-
-    setUp(() {
-      _colourMerger = ColourMerger();
-    });
-
     void _testMerge(Colour source, Colour target, Colour expected) {
-      var actual1 = _colourMerger.merge(source, target);
-      var actual2 = _colourMerger.merge(target, source);
+      var actual1 = source.merge(target);
+      var actual2 = target.merge(source);
 
       expect(actual1, expected);
       expect(actual2, expected);

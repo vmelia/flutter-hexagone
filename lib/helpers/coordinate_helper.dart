@@ -1,15 +1,10 @@
-import 'package:hexagone/contracts/i_coordinate_helper.dart';
-import 'package:hexagone/types/coordinate.dart';
+import '../types/coordinate.dart';
 
-class CoordinateHelper implements ICoordinateHelper {
-  final int _maximumRange = 2;
-  List<Coordinate> _neighbourOffsets;
+class CoordinateHelper {
+  static int _maximumRange = 2;
+  static List<Coordinate> _neighbourOffsets = getNeighbourOffsets();
 
-  CoordinateHelper() {
-    _neighbourOffsets = getNeighbourOffsets();
-  }
-
-  Iterable<Coordinate> getCoordinatesInRange(int range) {
+  static Iterable<Coordinate> getCoordinatesInRange(int range) {
     var coordinates = <Coordinate>[];
     for (var x = -range; x <= range; x++) {
       for (var y = -range; y <= range; y++) {
@@ -21,7 +16,7 @@ class CoordinateHelper implements ICoordinateHelper {
     return coordinates;
   }
 
-  Iterable<Coordinate> getNeighbourOffsets() {
+  static Iterable<Coordinate> getNeighbourOffsets() {
     final offsets = <Coordinate>[];
     final coordinates = getCoordinatesInRange(1);
     for (final coordinate in coordinates) {
@@ -31,7 +26,7 @@ class CoordinateHelper implements ICoordinateHelper {
     return offsets;
   }
 
-  List<Coordinate> getNeighbours(Coordinate coordinate) {
+  static List<Coordinate> getNeighbours(Coordinate coordinate) {
     var coordinates = <Coordinate>[];
     for (final o in _neighbourOffsets) {
       var potentialNeighbour = Coordinate(coordinate.x + o.x, coordinate.y + o.y);
@@ -41,8 +36,7 @@ class CoordinateHelper implements ICoordinateHelper {
     return coordinates;
   }
 
-  //ToDo: This doesn't belong here. It's more a grid thing.
-  bool _exists(Coordinate coordinate) {
+  static bool _exists(Coordinate coordinate) {
     if (coordinate.x < -_maximumRange || coordinate.x > _maximumRange) return false;
     if (coordinate.y < -_maximumRange || coordinate.y > _maximumRange) return false;
 

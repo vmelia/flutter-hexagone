@@ -18,11 +18,12 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+4
 
 environment:
-  sdk: ^2.3.0
+  sdk: ^2.7.0
 
 dependencies:
   flutter:
     sdk: flutter
+  flutter_bloc: any
   provider: any
   get_it: any
   hexagon: any

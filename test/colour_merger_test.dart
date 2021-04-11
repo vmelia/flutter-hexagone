@@ -46,9 +46,7 @@ void main() {
       _testMergesFromWhite(Colour.Purple);
     });
 
-    test(
-        'merge, when merging primary and  secondary, and does not overlap, returns black',
-        () {
+    test('merge, when merging primary/secondary, and does not overlap, returns black', () {
       _testMergesToBlack(Colour.Red, Colour.Green);
       _testMergesToBlack(Colour.Yellow, Colour.Purple);
       _testMergesToBlack(Colour.Blue, Colour.Orange);
@@ -60,17 +58,13 @@ void main() {
       _testMergesFromBlack(Colour.Blue, Colour.Orange);
     });
 
-    test(
-        'merge, when source and target are primary, returns correct secondary colour',
-        () {
+    test('merge, when source and target are primary, returns correct secondary colour', () {
       _testMerge(Colour.Red, Colour.Yellow, Colour.Orange);
       _testMerge(Colour.Yellow, Colour.Blue, Colour.Green);
       _testMerge(Colour.Blue, Colour.Red, Colour.Purple);
     });
 
-    test(
-        'merge, when merging primary and secondary, and does overlap, returns correct primary',
-        () {
+    test('merge, when merging primary/secondary, and does overlap, returns correct primary', () {
       _testMerge(Colour.Red, Colour.Orange, Colour.Yellow);
       _testMerge(Colour.Red, Colour.Purple, Colour.Blue);
       _testMerge(Colour.Yellow, Colour.Orange, Colour.Red);

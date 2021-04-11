@@ -63,13 +63,3 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     hintMode = false;
   }
 }
-
-//Todo: Handle game over.
-// if (xxx) {
-//   var replay = await showGameOverDialog(context, viewModel.moves);
-//   if (replay) {
-//     viewModel.replayLastGame();
-//   } else {
-//     viewModel.startNewGame();
-//   }
-// }

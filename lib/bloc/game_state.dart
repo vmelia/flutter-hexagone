@@ -8,7 +8,7 @@ class GameInitial extends GameState {
 
 class GridUpdatedState extends GameState {}
 
-class SelectedColourChangedState extends GameState {} //ToDo: Needed?
+class SelectedColourChangedState extends GameState {}
 
 class GameOverState extends GameState {
   final int movesTaken;
